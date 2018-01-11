@@ -36,15 +36,16 @@ describe('BenchesReducer', () => {
     beforeEach(() => {
       // Set up the action that will be passed into the reducer:
       // Your code here
+      action = {type: BenchActions.RECEIVE_BENCHES, benches: testBenches};
     });
 
     test('should replace the state with the action\'s benches', () => {
-      expect(BenchesReducer(undefined, {type: BenchActions.RECEIVE_BENCHES, benches: testBenches})).toEqual(testBenches);
+      expect(BenchesReducer(undefined, action)).toEqual(testBenches);
     });
 
     test('should not modify the old state', () => {
       let oldState = {"benches": "lol"};
-      BenchesReducer(undefined, {type: BenchActions.RECEIVE_BENCHES, benches: testBenches});
+      BenchesReducer(undefined, action);
       expect(oldState["benches"]).toEqual("lol");
     });
   });
